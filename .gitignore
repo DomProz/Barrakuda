@@ -3,3 +3,15 @@
 ################################################################################
 
 /.vs
+/BarrakudaAPI/WebAPI/bin/Debug/net6.0
+/BarrakudaAPI/Infrastructure/obj/Debug/net6.0
+/BarrakudaAPI/Infrastructure/bin/Debug/net6.0
+/BarrakudaAPI/Domain/obj/Debug/net6.0
+/BarrakudaAPI/Domain/bin/Debug/net6.0
+/BarrakudaAPI/Application/obj/Debug/net6.0
+/BarrakudaAPI/Application/bin/Debug/net6.0
+/BarrakudaAPI/.vs/BarrakudaAPI/v17
+/BarrakudaAPI/Application/obj
+/BarrakudaAPI/Domain/obj
+/BarrakudaAPI/Infrastructure/obj
+/BarrakudaAPI/WebAPI/obj
