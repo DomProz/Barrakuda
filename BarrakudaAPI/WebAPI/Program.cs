@@ -1,3 +1,5 @@
+using Application.Interfaces;
+using Application.Services;
 using Domain.Interfaces;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<BarrakudaDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
