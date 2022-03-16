@@ -15,4 +15,5 @@
 /BarrakudaAPI/Domain/obj
 /BarrakudaAPI/Infrastructure/obj
 /BarrakudaAPI/WebAPI/obj
+/BarrakudaAPI/WebAPI/appsettings.json
 /BarrakudaAPI/.vs/BarrakudaAPI

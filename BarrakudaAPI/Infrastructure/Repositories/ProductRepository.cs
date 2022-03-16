@@ -1,5 +1,4 @@
 ﻿using Domain.Entities;
-using Domain.Enums;
 using Domain.Interfaces;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
@@ -53,15 +52,6 @@ namespace Infrastructure.Repositories
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
             var products = await _dbContext.Products
-                .ToListAsync();
-
-            return products;
-        }
-
-        public async Task<IEnumerable<Product>> GetProductsByCategory(ECategory category)
-        {
-            var products = await _dbContext.Products
-                .Where(p => p.Category == category)
                 .ToListAsync();
 
             return products;

@@ -3,7 +3,6 @@ using Application.Interfaces;
 using Application.Models.Product;
 using AutoMapper;
 using Domain.Entities;
-using Domain.Enums;
 using Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 
@@ -23,7 +22,7 @@ namespace Application.Services
             _logger = logger;
         }
 
-        public async Task CreateProduct(ProductDto productDto)
+        public async Task CreateProduct(CreateProductDto productDto)
         {
             var product = _mapper.Map<Product>(productDto);
 
@@ -36,40 +35,22 @@ namespace Application.Services
             await _productRepository.DeleteProduct(productId);
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllProducts()
+        public async Task<IEnumerable<CreateProductDto>> GetAllProducts()
         {
             var products = await _productRepository.GetAllProducts();
-            var productsDto = _mapper.Map<IEnumerable<ProductDto>>(products);
+            var productsDto = _mapper.Map<IEnumerable<CreateProductDto>>(products);
 
             return productsDto;
         }
 
-        public async Task<ProductDto> GetProductById(int productId)
+        public async Task<CreateProductDto> GetProductById(int productId)
         {
             var product = await _productRepository.GetProductById(productId);
             if (product is null)
             {
                 throw new NotFoundException("product not found");
             }
-            var productDto = _mapper.Map<ProductDto>(product);
-            return productDto;
-        }
-
-        public async Task<IEnumerable<ProductDto>> GetProductsByCategory(string category)
-        {
-            var myEnum = (ECategory)default;
-            try
-            {
-                myEnum = (ECategory)Enum.Parse(typeof(ECategory), category);
-            }
-            catch (Exception)
-            {
-                throw new NotFoundException("product not found");
-            }
-
-            var product = await _productRepository.GetProductsByCategory(myEnum);
-
-            var productDto = _mapper.Map<IEnumerable<ProductDto>>(product);
+            var productDto = _mapper.Map<CreateProductDto>(product);
             return productDto;
         }
 
@@ -81,7 +62,10 @@ namespace Application.Services
                 throw new NotFoundException("product not found");
             }
 
-            var productDto = _mapper.Map<Product>(updateProductDto);
+            product.Name = updateProductDto.Name;
+            product.Description = updateProductDto.Description;
+            product.Price = updateProductDto.Price;
+            product.Pieces = updateProductDto.Pieces;
 
             await _productRepository.UpdateProduct(product, productId);
         }

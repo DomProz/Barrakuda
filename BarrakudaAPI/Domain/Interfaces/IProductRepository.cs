@@ -8,7 +8,6 @@ namespace Domain.Interfaces
         Task UpdateProduct(Product product, int productId);
         Task DeleteProduct(int productId);
         Task<Product> GetProductById(int productId);
-        Task<IEnumerable<Product>> GetProductsByCategory(ECategory category);
         Task<IEnumerable<Product>> GetAllProducts();
     }
 }

@@ -1,5 +1,4 @@
-﻿using Domain.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Application.Models.Product
 {
@@ -11,7 +10,7 @@ namespace Application.Models.Product
         [Required]
         public string Description { get; set; } = string.Empty;
         [Required]
-        public ECategory Category { get; set; }
+        public string Category { get; set; } = string.Empty;
         public string SubCategory { get; set; } = string.Empty;
         public string Condition { get; set; } = string.Empty;
         public string Brand { get; set; } = string.Empty;

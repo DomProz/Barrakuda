@@ -16,40 +16,32 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<ActionResult> GetAll()
         {
             var products = await _productService.GetAllProducts();
 
             return Ok(products);
         }
 
-        [HttpGet("{category}")]
-        public async Task<ActionResult> Get([FromRoute] string productCategory)
-        {
-            var products = await _productService.GetProductsByCategory(productCategory);
-
-            return Ok(products);
-        }
-
         [HttpGet("{id}")]
-        public async Task<ActionResult> Get([FromRoute]int productId)
+        public async Task<ActionResult> Get([FromRoute]int id)
         {
-            var products = await _productService.GetProductById(productId);
+            var products = await _productService.GetProductById(id);
 
             return Ok(products);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody]ProductDto productDto)
+        public async Task<ActionResult> Create([FromBody]CreateProductDto productDto)
         {
             await _productService.CreateProduct(productDto);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromBody]UpdateProductDto productDto, [FromRoute]int productId)
+        public async Task<ActionResult> Update([FromBody]UpdateProductDto productDto, [FromRoute]int id)
         {
-            await _productService.UpdateProduct(productDto, productId);
+            await _productService.UpdateProduct(productDto, id);
             return Ok();
         }
 

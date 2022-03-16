@@ -8,8 +8,10 @@ namespace Application.Mapping
     {
         public ProductMappingProfiles()
         {
-            CreateMap<Product, ProductDto>();
+            CreateMap<Product, CreateProductDto>();
+
             CreateMap<CreateProductDto, Product>();
+            CreateMap<UpdateProductDto, Product>();
         }
     }
 }
